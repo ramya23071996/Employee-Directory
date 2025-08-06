@@ -1,0 +1,9 @@
+{% extends 'directory/base.html' %}
+{% block content %}
+<h2>{% if form.instance.pk %}Edit{% else %}Add{% endif %} Employee</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button class="btn btn-success">Save</button>
+</form>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'directory/base.html' %}
+{% block content %}
+<h2>Employee Directory</h2>
+<form method="get" class="mb-3">
+  <select name="department" onchange="this.form.submit()" class="form-select w-25">
+    <option value="">All Departments</option>
+    {% for dept in employees|dictsort:"department.name" %}
+      <option value="{{ dept.department.name }}">{{ dept.department.name }}</option>
+    {% endfor %}
+  </select>
+</form>
+<div class="row">
+  {% for employee in employees %}
+    <div class="col-md-4 mb-3">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">{{ employee.name }}</h5>
+          <p class="card-text">{{ employee.position }}</p>
+          <a href="{% url 'employee-detail' employee.pk %}" class="btn btn-primary">Details</a>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+{% endblock %}

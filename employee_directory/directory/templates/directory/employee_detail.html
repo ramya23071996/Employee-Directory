@@ -1,0 +1,14 @@
+{% extends 'directory/base.html' %}
+{% block content %}
+<h2>{{ employee.name }}</h2>
+<p><strong>Position:</strong> {{ employee.position }}</p>
+<p><strong>Email:</strong> {{ employee.email }}</p>
+<p><strong>Phone:</strong> {{ employee.phone }}</p>
+<p><strong>Department:</strong> {{ employee.department.name }}</p>
+<p class="text-muted">{{ breadcrumb }}</p>
+
+{% if user.is_staff %}
+  <a href="{% url 'employee-edit' employee.pk %}" class="btn btn-warning">Edit</a>
+  <a href="{% url 'employee-delete' employee.pk %}" class="btn btn-danger">Delete</a>
+{% endif %}
+{% endblock %}

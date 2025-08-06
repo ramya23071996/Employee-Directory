@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: employee-directory
+    env: python
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn employee_project.wsgi:application"
+    envVars:
+      - key: DJANGO_SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: False
